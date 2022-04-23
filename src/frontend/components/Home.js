@@ -58,13 +58,10 @@ const Home = ({ marketplace, nft }) => {
                   <Card.Img variant="top" src={item.image} />
                   <Card.Body color="secondary">
                     <Card.Title>{item.name}</Card.Title>
-                    <Card.Text>
-                      {item.description}
-                    </Card.Text>
                   </Card.Body>
                   <Card.Footer>
                     <div className='d-grid'>
-                      <Button onClick={() => buyMarketItem(item)} variant="primary" size="lg">
+                      <Button onClick={() => buyMarketItem(item)} variant="secondary" size="md">
                         Buy for {ethers.utils.formatEther(item.totalPrice)} ETH
                       </Button>
                     </div>

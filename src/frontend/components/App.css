@@ -2,6 +2,34 @@
   text-align: center;
 }
 
+.mynavbar {
+  @import url('https://fonts.googleapis.com/css2?family=Tapestry&display=swap');
+  font-family: 'Tapestry', cursive;
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+}
+
+.mylogotitle {
+  font-size: 28px;
+}
+
+.myconnectbtn {
+  font-size: 20px
+}
+
+.mybody {
+  font-size: large;
+}
+
+.mybox {
+  border: 3px dashed darkcyan;
+}
+
+h2 {
+  font-family: 'Tapestry', cursive;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -32,6 +60,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

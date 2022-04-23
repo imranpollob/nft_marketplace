@@ -8,7 +8,6 @@ const Create = ({ marketplace, nft }) => {
   const [image, setImage] = useState('')
   const [price, setPrice] = useState(null)
   const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
   const uploadToIPFS = async (event) => {
     event.preventDefault()
     const file = event.target.files[0]
@@ -23,9 +22,9 @@ const Create = ({ marketplace, nft }) => {
     }
   }
   const createNFT = async () => {
-    if (!image || !price || !name || !description) return
+    if (!image || !price || !name) return
     try{
-      const result = await client.add(JSON.stringify({image, price, name, description}))
+      const result = await client.add(JSON.stringify({image, price, name}))
       mintThenList(result)
     } catch(error) {
       console.log("ipfs uri upload error: ", error)
@@ -56,11 +55,11 @@ const Create = ({ marketplace, nft }) => {
                 onChange={uploadToIPFS}
               />
               <Form.Control onChange={(e) => setName(e.target.value)} size="lg" required type="text" placeholder="Name" />
-              <Form.Control onChange={(e) => setDescription(e.target.value)} size="lg" required as="textarea" placeholder="Description" />
+            
               <Form.Control onChange={(e) => setPrice(e.target.value)} size="lg" required type="number" placeholder="Price in ETH" />
               <div className="d-grid px-0">
-                <Button onClick={createNFT} variant="primary" size="lg">
-                  Create & List NFT!
+                <Button onClick={createNFT} variant="success" size="lg">
+                  Create a new NFT
                 </Button>
               </div>
             </Row>

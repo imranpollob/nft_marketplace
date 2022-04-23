@@ -4,8 +4,9 @@ import { Row, Col, Card } from 'react-bootstrap'
 
 function renderSoldItems(items) {
   return (
-    <>
-      <h2>Sold</h2>
+    <div>
+      <hr></hr>
+      <h2>My Sold Items</h2>
       <Row xs={1} md={2} lg={4} className="g-4 py-3">
         {items.map((item, idx) => (
           <Col key={idx} className="overflow-hidden">
@@ -18,7 +19,25 @@ function renderSoldItems(items) {
           </Col>
         ))}
       </Row>
-    </>
+    </div>
+  )
+}
+
+function renderListItems(listedItems) {
+  return (
+    <div className="px-5 py-3 container">
+      <h2>My Listed Items</h2>
+      <Row xs={1} md={2} lg={4} className="g-4 py-3">
+        {listedItems.map((item, idx) => (
+          <Col key={idx} className="overflow-hidden">
+            <Card>
+              <Card.Img variant="top" src={item.image} />
+              <Card.Footer>{ethers.utils.formatEther(item.totalPrice)} ETH</Card.Footer>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </div>
   )
 }
 
@@ -69,26 +88,17 @@ export default function MyListedItems({ marketplace, nft, account }) {
   )
   return (
     <div className="flex justify-center">
-      {listedItems.length > 0 ?
-        <div className="px-5 py-3 container">
-            <h2>Listed</h2>
-          <Row xs={1} md={2} lg={4} className="g-4 py-3">
-            {listedItems.map((item, idx) => (
-              <Col key={idx} className="overflow-hidden">
-                <Card>
-                  <Card.Img variant="top" src={item.image} />
-                  <Card.Footer>{ethers.utils.formatEther(item.totalPrice)} ETH</Card.Footer>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-            {soldItems.length > 0 && renderSoldItems(soldItems)}
-        </div>
-        : (
-          <main style={{ padding: "1rem 0" }}>
-            <h2>No listed assets</h2>
-          </main>
-        )}
+      <div className="px-5 py-3 container">
+        {listedItems.length > 0 ?
+          renderListItems(listedItems)
+          : (
+            <main style={{ padding: "1rem 0" }}>
+              <h2>No listed assets</h2>
+            </main>
+          )}
+
+        {soldItems.length > 0 && renderSoldItems(soldItems)}
+      </div>
     </div>
   );
 }

@@ -54,10 +54,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <>
+        <div className="mynavbar">
           <Navigation web3Handler={web3Handler} account={account} />
-        </>
-        <div>
+        </div>
+        <div className="mybody">
           {loading ? (
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
               <Spinner animation="border" style={{ display: 'flex' }} />
